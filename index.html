@@ -7,13 +7,13 @@
     <meta name="description" content="Remove EXIF data, GPS coordinates, camera models, and hidden metadata from your photos instantly. 100% secure, browser-based, and free privacy tool.">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
 
     <!-- Header -->
-    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-extrabold tracking-tight text-blue-400">CleanMeta<span class="text-slate-400 text-sm font-normal ml-2">.io</span></h1>
-            <nav class="text-sm space-x-6 text-slate-400">
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-3.5 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <h1 class="text-xl font-extrabold tracking-tight text-blue-400">CleanMeta<span class="text-slate-400 text-sm font-normal ml-1.5">.io</span></h1>
+            <nav class="flex flex-wrap justify-center gap-4 text-xs sm:text-sm text-slate-400">
                 <a href="#tool" class="hover:text-white transition">Tool</a>
                 <a href="#guide" class="hover:text-white transition">Guide</a>
                 <a href="#faq" class="hover:text-white transition">FAQ</a>
@@ -24,37 +24,39 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-4 py-10 flex-grow w-full space-y-16">
+    <main class="max-w-5xl mx-auto px-4 py-8 sm:py-12 flex-grow w-full space-y-16">
 
         <!-- Hero & Tool Section -->
         <section id="tool" class="text-center space-y-6">
-            <div class="space-y-3 max-w-2xl mx-auto">
-                <span class="bg-blue-950 text-blue-400 border border-blue-800 text-xs px-3 py-1 rounded-full font-medium">100% Secure • Client-Side Processing • Zero Server Uploads</span>
-                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">Remove EXIF Data & GPS From Photos</h2>
-                <p class="text-slate-400 text-sm md:text-base">Protect your personal privacy. Strip hidden metadata, precise GPS location coordinates, timestamps, and device info instantly right inside your web browser.</p>
+            <div class="space-y-3 max-w-2xl mx-auto px-2">
+                <span class="inline-block bg-blue-950/80 text-blue-400 border border-blue-800 text-[11px] sm:text-xs px-3 py-1 rounded-full font-medium leading-relaxed">
+                    100% Secure • Client-Side Processing • Zero Server Uploads
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">Remove EXIF Data & GPS From Photos</h2>
+                <p class="text-slate-400 text-xs sm:text-base leading-relaxed">Protect your personal privacy. Strip hidden metadata, precise GPS location coordinates, timestamps, and device info instantly right inside your web browser.</p>
             </div>
 
             <!-- Upload Card -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 max-w-lg mx-auto shadow-2xl space-y-5 text-left">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-8 max-w-lg mx-auto shadow-2xl space-y-5 text-left">
                 <div class="space-y-3 text-center">
-                    <button type="button" id="selectBtn" class="w-full bg-blue-600 hover:bg-blue-500 active:scale-[0.99] text-white font-semibold py-4 px-6 rounded-xl transition cursor-pointer flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                    <button type="button" id="selectBtn" class="w-full bg-blue-600 hover:bg-blue-500 active:scale-[0.99] text-white font-semibold py-3.5 sm:py-4 px-6 rounded-xl transition cursor-pointer flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 text-sm sm:text-base">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
                         <span>Select Photo to Clean</span>
                     </button>
-                    <p class="text-xs text-slate-500">Supports JPG, PNG, WebP formats • Processed locally on your device</p>
+                    <p class="text-[11px] sm:text-xs text-slate-500">Supports JPG, PNG, WebP formats • Processed locally on your device</p>
                     <input type="file" id="fileInput" accept="image/jpeg, image/png, image/webp" class="hidden">
                 </div>
 
                 <!-- Result Area -->
                 <div id="resultArea" class="hidden space-y-4 pt-4 border-t border-slate-800">
-                    <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 text-left flex items-center justify-between">
+                    <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 text-left flex items-center justify-between gap-2">
                         <div class="overflow-hidden pr-2">
-                            <p id="fileName" class="text-sm font-medium text-slate-200 truncate">image.jpg</p>
-                            <p class="text-xs text-emerald-400">✔️ EXIF Metadata Successfully Removed</p>
+                            <p id="fileName" class="text-xs sm:text-sm font-medium text-slate-200 truncate">image.jpg</p>
+                            <p class="text-[11px] sm:text-xs text-emerald-400">✔️ EXIF Metadata Successfully Removed</p>
                         </div>
-                        <span class="text-xs bg-emerald-950 text-emerald-300 px-2.5 py-1 rounded shrink-0">Safe</span>
+                        <span class="text-[11px] bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded shrink-0">Safe</span>
                     </div>
-                    <a id="downloadBtn" download="cleaned-image.jpg" class="w-full block bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 px-4 rounded-xl transition text-center shadow-lg shadow-emerald-600/20">
+                    <a id="downloadBtn" download="cleaned-image.jpg" class="w-full block bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 px-4 rounded-xl transition text-center shadow-lg shadow-emerald-600/20 text-sm sm:text-base">
                         Download Clean Image
                     </a>
                 </div>
@@ -62,24 +64,24 @@
         </section>
 
         <!-- Comprehensive SEO Guide Section -->
-        <section id="guide" class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 md:p-10 space-y-6 text-slate-300">
-            <h3 class="text-2xl font-bold text-white">The Ultimate Guide to EXIF Metadata & Digital Privacy</h3>
+        <section id="guide" class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 sm:p-10 space-y-6 text-slate-300">
+            <h3 class="text-xl sm:text-2xl font-bold text-white">The Ultimate Guide to EXIF Metadata & Digital Privacy</h3>
             
-            <div class="space-y-4 text-sm md:text-base leading-relaxed text-slate-400">
+            <div class="space-y-4 text-xs sm:text-base leading-relaxed text-slate-400">
                 <p>
                     In today's hyper-connected digital landscape, sharing photos online has become second nature. Whether you are posting travel photographs on a blog, submitting real estate images to a marketplace, or uploading snapshots to community forums, you are sharing more than just pixels. Every single photograph captured using a modern smartphone, tablet, or digital SLR camera contains a hidden digital footprint known as <strong>EXIF (Exchangeable Image File Format) data</strong>.
                 </p>
-                <h4 class="text-lg font-semibold text-white pt-2">What is Hidden Inside Your Photos?</h4>
+                <h4 class="text-base sm:text-lg font-semibold text-white pt-2">What is Hidden Inside Your Photos?</h4>
                 <p>
                     When an image file is generated, the camera hardware automatically appends rich technical tags into the file header. While some of these tags are harmless exposure metrics (such as shutter speed, aperture, ISO, and focal length), others pose severe privacy risks. These sensitive data attributes include:
                 </p>
-                <ul class="list-disc pl-6 space-y-2 text-slate-300">
+                <ul class="list-disc pl-5 space-y-2 text-slate-300">
                     <li><strong>Exact GPS Coordinates:</strong> Latitude, longitude, and altitude data pointing precisely to where the photo was shot (often pinpointing your home address or workplace).</li>
                     <li><strong>Timestamps:</strong> The exact local date and second the picture was captured.</li>
                     <li><strong>Device Specifications:</strong> Make, model, and firmware version of your smartphone or professional camera.</li>
                     <li><strong>Unique Device Identifiers:</strong> Serial numbers or internal software tags that can uniquely link media files back to your personal device.</li>
                 </ul>
-                <h4 class="text-lg font-semibold text-white pt-2">Why You Must Strip Metadata Before Sharing Online</h4>
+                <h4 class="text-base sm:text-lg font-semibold text-white pt-2">Why You Must Strip Metadata Before Sharing Online</h4>
                 <p>
                     Malicious actors, stalkers, and automated scrapers routinely crawl public websites and social channels to extract latent GPS coordinates from shared images. By stripping metadata using CleanMeta, you protect your physical safety, eliminate corporate tracking vectors, and ensure complete confidentiality when publishing media assets across foreign and domestic digital networks.
                 </p>
@@ -88,30 +90,30 @@
 
         <!-- Detailed FAQ Section -->
         <section id="faq" class="space-y-6">
-            <h3 class="text-2xl font-bold text-white text-center">Frequently Asked Questions</h3>
+            <h3 class="text-xl sm:text-2xl font-bold text-white text-center">Frequently Asked Questions</h3>
             
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-slate-900/40 border border-slate-800/80 rounded-xl p-6 space-y-2">
-                    <h4 class="font-semibold text-white">Are my photos uploaded to any external server?</h4>
-                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed">
+            <div class="grid md:grid-cols-2 gap-4 sm:gap-6">
+                <div class="bg-slate-900/40 border border-slate-800/80 rounded-xl p-5 space-y-2">
+                    <h4 class="font-semibold text-white text-sm sm:text-base">Are my photos uploaded to any external server?</h4>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
                         No, absolutely not. CleanMeta operates 100% client-side inside your web browser using HTML5 Canvas rendering. Your files never leave your local device memory.
                     </p>
                 </div>
-                <div class="bg-slate-900/40 border border-slate-800/80 rounded-xl p-6 space-y-2">
-                    <h4 class="font-semibold text-white">What image formats are supported?</h4>
-                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed">
+                <div class="bg-slate-900/40 border border-slate-800/80 rounded-xl p-5 space-y-2">
+                    <h4 class="font-semibold text-white text-sm sm:text-base">What image formats are supported?</h4>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
                         Currently, our tool fully supports standard web and camera formats including JPEG (.jpg, .jpeg), PNG (.png), and WebP (.webp).
                     </p>
                 </div>
-                <div class="bg-slate-900/40 border border-slate-800/80 rounded-xl p-6 space-y-2">
-                    <h4 class="font-semibold text-white">Does removing EXIF data degrade image quality?</h4>
-                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed">
+                <div class="bg-slate-900/40 border border-slate-800/80 rounded-xl p-5 space-y-2">
+                    <h4 class="font-semibold text-white text-sm sm:text-base">Does removing EXIF data degrade image quality?</h4>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
                         No. The visual quality remains pristine. We redraw the image canvas securely to strip binary metadata headers while preserving high-definition fidelity.
                     </p>
                 </div>
-                <div class="bg-slate-900/40 border border-slate-800/80 rounded-xl p-6 space-y-2">
-                    <h4 class="font-semibold text-white  ">Is CleanMeta completely free to use?</h4>
-                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed">
+                <div class="bg-slate-900/40 border border-slate-800/80 rounded-xl p-5 space-y-2">
+                    <h4 class="font-semibold text-white text-sm sm:text-base">Is CleanMeta completely free to use?</h4>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
                         Yes! CleanMeta is a free public privacy utility supported by non-intrusive advertising partners to keep server-less tools accessible worldwide.
                     </p>
                 </div>
@@ -119,12 +121,12 @@
         </section>
 
         <!-- About Us & Privacy Policy Detailed Sections -->
-        <div class="grid md:grid-cols-2 gap-8 pt-4">
+        <div class="grid md:grid-cols-2 gap-6 sm:gap-8 pt-4">
             
             <!-- About Us -->
-            <section id="about" class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 md:p-8 space-y-4">
-                <h3 class="text-xl font-bold text-white">About CleanMeta.io</h3>
-                <div class="text-xs md:text-sm text-slate-400 space-y-3 leading-relaxed">
+            <section id="about" class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 sm:p-8 space-y-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">About CleanMeta.io</h3>
+                <div class="text-xs sm:text-sm text-slate-400 space-y-3 leading-relaxed">
                     <p>
                         CleanMeta was founded with a singular, uncompromising vision: to empower global internet users with lightning-fast, transparent, and ultra-secure browser utilities that respect user autonomy.
                     </p>
@@ -135,9 +137,9 @@
             </section>
 
             <!-- Privacy Policy -->
-            <section id="privacy" class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 md:p-8 space-y-4">
-                <h3 class="text-xl font-bold text-white">Privacy Policy & Terms</h3>
-                <div class="text-xs md:text-sm text-slate-400 space-y-3 leading-relaxed">
+            <section id="privacy" class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 sm:p-8 space-y-4">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Privacy Policy & Terms</h3>
+                <div class="text-xs sm:text-sm text-slate-400 space-y-3 leading-relaxed">
                     <p>
                         <strong>Zero File Retention:</strong> We do not store, cache, archive, or inspect any images processed through our interface. All tasks execute directly within your browser's temporary runtime environment and clear automatically.
                     </p>
@@ -155,7 +157,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-slate-900/30 text-center py-8 text-xs text-slate-500 space-y-2">
+    <footer class="border-t border-slate-800 bg-slate-900/30 text-center py-8 text-xs text-slate-500 space-y-2 px-4">
         <p>&copy; 2026 CleanMeta.io. All rights reserved. Built for global web privacy and digital sovereignty.</p>
         <p class="text-slate-600">Secure Client-Side Image Scrubbing Utility</p>
     </footer>
