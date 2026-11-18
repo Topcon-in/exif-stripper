@@ -1,1 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanMeta - Free Online EXIF Metadata Remover & Photo Privacy Tool</title>
+    <meta name="description" content="Remove EXIF data, GPS coordinates, and hidden metadata from your photos instantly. 100% secure, browser-based, and free.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
 
+    <!-- Header -->
+    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold tracking-tight text-blue-400">CleanMeta<span class="text-slate-400 text-sm font-normal ml-2">.io</span></h1>
+            <nav class="text-sm space-x-4 text-slate-400">
+                <a href="#tool" class="hover:text-white transition">Tool</a>
+                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="#privacy" class="hover:text-white transition">Privacy</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full space-y-12">
+
+        <!-- Hero & Tool Section -->
+        <section id="tool" class="text-center space-y-6">
+            <div class="space-y-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Remove EXIF Data & GPS From Photos</h2>
+                <p class="text-slate-400 max-w-xl mx-auto text-sm md:text-base">Protect your privacy. Strip hidden metadata, location coordinates, and camera info instantly right inside your browser.</p>
+            </div>
+
+            <!-- Upload Card -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 max-w-xl mx-auto shadow-2xl space-y-6">
+                <div id="dropZone" class="border-2 border-dashed border-slate-700 hover:border-blue-500 rounded-xl p-8 transition cursor-pointer flex flex-col items-center justify-center space-y-3 bg-slate-950/50">
+                    <svg class="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <p class="text-sm text-slate-300 font-medium">Drag & drop your photo here, or <span class="text-blue-400 underline">browse</span></p>
+                    <p class="text-xs text-slate-500">Supports JPG, PNG, WebP</p>
+                    <input type="file" id="fileInput" accept="image/jpeg, image/png, image/webp" class="hidden">
+                </div>
+
+                <div id="resultArea" class="hidden space-y-4">
+                    <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 text-left flex items-center justify-between">
+                        <div>
+                            <p id="fileName" class="text-sm font-medium text-slate-200 truncate max-w-xs">image.jpg</p>
+                            <p class="text-xs text-emerald-400">✔️ EXIF Metadata Successfully Scrubbed</p>
+                        </div>
+                        <span class="text-xs bg-emerald-950 text-emerald-300 px-2 py-1 rounded">Safe</span>
+                    </div>
+                    <a id="downloadBtn" download="cleaned-image.jpg" class="w-full block bg-blue-600 hover:bg-blue-500 text-white font-medium py-2.5 px-4 rounded-xl transition text-center shadow-lg shadow-blue-600/20">
+                        Download Clean Image
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content & Guide -->
+        <section class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 md:p-8 space-y-4 text-slate-300">
+            <h3 class="text-xl font-bold text-white">Why Remove EXIF Metadata from Your Photos?</h3>
+            <p class="text-sm leading-relaxed text-slate-400">
+                Every digital photo captured on a smartphone or digital camera embeds hidden information called <strong>EXIF (Exchangeable Image File Format) data</strong>. This includes sensitive details such as your exact GPS coordinates, date, time, device model, and even software versions. When you share images online on blogs, social media, or forums, anyone can potentially extract this information to track your location.
+            </p>
+            <h4 class="font-semibold text-white pt-2">100% Client-Side Privacy</h4>
+            <p class="text-sm leading-relaxed text-slate-400">
+                Unlike traditional cloud converters, CleanMeta processes your images entirely inside your browser using HTML5 Canvas technology. Your photos are <strong>never uploaded to any external server</strong>, guaranteeing complete privacy and absolute security.
+            </p>
+        </section>
+
+        <!-- About Us & Privacy Policy Section (For SEO / Trust) -->
+        <div class="grid md:grid-cols-2 gap-6 pt-4">
+            <section id="about" class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 space-y-3">
+                <h3 class="text-lg font-bold text-white">About CleanMeta</h3>
+                <p class="text-xs md:text-sm text-slate-400 leading-relaxed">
+                    CleanMeta is a lightweight, independent utility built for privacy-conscious creators, developers, and internet users. Our goal is to provide fast, secure, browser-based tools that require zero sign-ups or server storage.
+                </p>
+            </section>
+
+            <section id="privacy" class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 space-y-3">
+                <h3 class="text-lg font-bold text-white">Privacy Policy</h3>
+                <p class="text-xs md:text-sm text-slate-400 leading-relaxed">
+                    We do not collect, view, store, or share any files you process. All image cleanup happens locally in your device's memory. We may use standard non-intrusive ad networks and analytics to support the free platform.
+                </p>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-900/30 text-center py-6 text-xs text-slate-500">
+        <p>&copy; 2026 CleanMeta.io. All rights reserved. Built for global web privacy.</p>
+    </footer>
+
+    <!-- Core JavaScript Logic (Zero Backend Required) -->
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const resultArea = document.getElementById('resultArea');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const fileNameEl = document.getElementById('fileName');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('border-blue-500', 'bg-slate-900');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('border-blue-500', 'bg-slate-900');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-blue-500', 'bg-slate-900');
+            if (e.dataTransfer.files.length) {
+                handleImage(e.dataTransfer.files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                handleImage(e.target.files[0]);
+            }
+        });
+
+        function handleImage(file) {
+            if (!file.type.match('image.*')) {
+                alert('Please upload a valid image file (JPG, PNG, WebP)');
+                return;
+            }
+
+            fileNameEl.textContent = file.name;
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    // Create canvas to redraw image (Strips all EXIF metadata natively)
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+
+                    // Export clean image data URL
+                    const cleanImageUrl = canvas.toDataURL(file.type, 0.92);
+                    downloadBtn.href = cleanImageUrl;
+                    downloadBtn.download = cleaned-${file.name};
+                    
+                    resultArea.classList.remove('hidden');
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>
